@@ -22,6 +22,8 @@ class Login_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	
+	/* PANIE ALEŚ PAN ODJEBAŁ..... */
 	public function check_user($username, $password){
 		$this->db->select('id, name, username, password, users_type, project_id');
 		$this->db->from('users');
