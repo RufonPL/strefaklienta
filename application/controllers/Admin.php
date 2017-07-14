@@ -15,16 +15,23 @@ class Admin extends CI_Controller {
 		$this->load->model('admin_model');
 
 	}
-	
+
 	public function main()
 	{
 		$data['projects'] = $this->admin_model->get_AllProjects();
 		$this->load->view('admin/main', $data);
 	}
-	
+
 	public function changeProjectID($projectID){
 		$query = $this->admin_model->change_projectID($projectID);
 		$_SESSION["project_id"] = $query->id;
 		return redirect('/project/view/');
+	}
+
+	public function pageCreate($projectID = 1, $pagetitle = "(D)Strona główna", $pageSlug = "strona-glowna"){
+		$data['query'] = $this->admin_model->add_projectPage($projectID, $pagetitle, $pageSlug);
+		$this->load->view('admin/pagemodification', $data['query']);
+
+
 	}
 }

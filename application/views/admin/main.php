@@ -14,7 +14,7 @@ Dostępne projekty:<br/>
 		echo "<td>".$item['project_title']."</td>";
 		echo "<td>".$item['project_description']."</td>";
 		echo "<td>".$item['project_slug']."</td>";
-		
+
 		echo '<td><a href="'.base_url("admin/changeProjectID/$id").'">Przejdź do projektu</a></td>';
 		echo "</tr>";
 	}

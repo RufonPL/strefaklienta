@@ -35,8 +35,8 @@ class Project extends CI_Controller {
 			$_SESSION['user_type'] == "admin" ? $this->load->view('projekty/main', $data) : '';
 
 			$this->load->view('projekty/menubutton', $data);
-	        $this->load->view('projekty/footer', $data);
-        }
+	    $this->load->view('projekty/footer', $data);
+      }
 
 
 

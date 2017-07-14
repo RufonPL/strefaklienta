@@ -2,7 +2,7 @@
   <div class="dropdown" style="float: left;">
     <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
     <ul class="dropdown-menu">
-	<?php
+    <?php
 		foreach ($dbquery as $row) {
 			echo '<li><a href="'.$row['page_slug'].'">'.$row['page_title']."</a></li>\n";
 		}
@@ -10,10 +10,11 @@
 		if ($_SESSION['user_type'] == "admin") {
 			echo '<li class="divider"></li>';
 		}
-		echo '<li><a href="'.base_url("admin").'">Przejdź do AdminDashboard</a></li>';
-	?>
-	    <li class="divider"></li>
-	    <li><a href="<?php echo base_url("logout");?>">Logout</a></li>
+    ?>
+     <li><a href="<?php echo base_url("admin/pagamodification");?>">Dodaj stronę</a></li>
+  	 <li><a href="<?php echo base_url("admin");?>">Przejdź do AdminDashboard</a></li>
+	   <li class="divider"></li>
+	   <li><a href="<?php echo base_url("logout");?>">Logout</a></li>
     </ul>
   </div><!-- TOP-LEFT DROPDOWN MENU-->
 </div>
