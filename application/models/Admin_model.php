@@ -22,27 +22,29 @@ class Admin_model extends CI_Model {
 		return $query->row();
 	}
 
-	public function add_projectPage($projectID, $pageTitle, $pageSlug){
-		echo '$pageSlug = '."$pageSlug\n";
-		$this->db->select('project_id, page_slug');
+	public function check_pageSlug($projectID, $pageSlug){
+		$this->db->select('page_slug');
 		$this->db->from('page');
 		$this->db->where('project_id', $projectID);
 		$query = $this->db->get();
 		$query = $query->result_array();
-
 		$key = array_search($pageSlug, array_column($query, 'page_slug'));
-		if ($key === false) {
-			// return error - slug (or title) exists, please pick different
+		if ($key !== false) {
+			return false;
 		} else {
-			// not tested
-/*			$data = array(
+			return true;
+		}
+	}
+
+	public function add_projectPage($projectID, $pageTitle, $pageSlug){
+			$data = array(
         'project_id' => $projectID,
         'page_title' => $pageTitle,
-				'layout_id' => NULL,
+				'layout_id' => 0,
         'page_slug' => $pageSlug
 			);
 
-			$this->db->insert('page', $data);*/
-		}
+			$this->db->insert('page', $data);
+			return true;
 	}
 }

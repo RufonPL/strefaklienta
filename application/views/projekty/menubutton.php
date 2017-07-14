@@ -11,7 +11,7 @@
 			echo '<li class="divider"></li>';
 		}
     ?>
-     <li><a href="<?php echo base_url("admin/pagamodification");?>">Dodaj stronę</a></li>
+     <li><a href="<?php echo base_url("admin/pageadd");?>">Dodaj stronę</a></li>
   	 <li><a href="<?php echo base_url("admin");?>">Przejdź do AdminDashboard</a></li>
 	   <li class="divider"></li>
 	   <li><a href="<?php echo base_url("logout");?>">Logout</a></li>

@@ -1,5 +1,5 @@
 <?php
-	echo "Jesteś na Admin Dashboard - o ja, nie wylogowało, ale póki co chuja możesz zrobić.<br/>";
+	echo "Jesteś na Admin Dashboard - możesz się tutaj dostać tylko jeżeli usertype = admin.<br/>";
 	echo '<a href="'.base_url("logout").'">Logout</a><br/><br/>';
 
 ?>
