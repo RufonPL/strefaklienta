@@ -20,13 +20,12 @@
 	body {
 		margin: 0;
 		width:100%;
-		height:<?php $size = getimagesize(getLayout($dbquerylayout)); echo $size[1];?>;
+		height:<?php echo $this->functions->getLayout($dbquerylayout, "height");?>;
 		background-color: black;
-		background:url(<?php //echo $this->project->getLayout($data['dbquerylayout']);?>) center top no-repeat;
-		background:url(<?php echo getLayout($dbquerylayout);?>) center top no-repeat;
+		background:url(<?php echo $this->functions->getLayout($dbquerylayout, "url");?>) center top no-repeat;
 		color: red;
 	}
-	
+
 	/* Custom menus, na kiedyś */
 	#main > div {
 		position: fixed;
@@ -34,7 +33,7 @@
 		border-bottom: 0px solid #ebebec;
         background-image: url(menu.jpg);
 		top: -450px;
-        
+
         -webkit-transition: all 0.5s 0s ease;
           -moz-transition: all 0.5s 0s ease;
           -ms-transition: all 0.5s 0s ease;
@@ -44,7 +43,7 @@
     .fixed #main > div {
         top: 0;
     }
-	
+
 </style>
 </head>
 <body>

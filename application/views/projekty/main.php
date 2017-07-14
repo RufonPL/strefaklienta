@@ -2,7 +2,7 @@
 	HELLO WORLD!<br>
 <?php
 	echo 'Zalogowany user to - ['.$_SESSION["user"].'] / Project id to - ['.$_SESSION["project_id"].'] / user type = ['.$_SESSION["user_type"].']<br>';
-	
+
 ?>
 <br>
 	<?php echo base_url().'||assets/css/style.css'; ?>
@@ -11,14 +11,14 @@
 			echo $row['page_title'];
 			echo $row['page_slug'];
 			echo "<br>";
-		}	
+		}
 		echo 'print_r($dbquery);'."<br>";
 		print_r($dbquery);
 	?>
 	<hr>
 	<?php
 		echo "dbquerylayout:<br>";
-		
+
 		foreach ($dbquerylayout as $row) {
 			echo "project_slug = ".$row['project_slug']."<br>";
 			echo "layout_slug = ".$row['layout_slug']."<br>";
@@ -28,10 +28,10 @@
 		print_r($dbquerylayout);
 		echo "<br>";
 	?>
-	
+
 	<?php //echo Project::getLayout($data['dbquerylayout']);?>
-	<?php echo getLayout($dbquerylayout);?>
-	<?php //echo getLayout($data['dbquerylayout']);?>	
+	<?php // echo getLayout($dbquerylayout);?>
+	<?php //echo getLayout($data['dbquerylayout']);?>
 	<?php //echo $this->controllers->projects->getLayout(/*$data['dbquerylayout']*/);?>
-	
-</div>	
+
+</div>

@@ -11,11 +11,8 @@ class Project extends CI_Controller {
 				if (!isset($_SESSION["user"])){
 					echo "Nie jesteś zalogowany. <br><a href=".base_url("login").">Zaloguj się.</a>";
 					exit;
-				}				
+				}
 				$this->load->model('project_model');
-				
-				//nie mogłem inaczej :( ale będzie lepiej
-				require "assets/functions/functions.php";
 
         }
 
@@ -28,19 +25,19 @@ class Project extends CI_Controller {
 			}
 
 			$data['dbquery'] = $this->project_model->get_menuItems($_SESSION["project_id"]);
-	
+
 			$this->load->helper('html');
-//			$this->load->helper('autoload');
-	
-	        $this->load->view('projekty/header', $data);
+
+      $this->load->library('functions', $data['dbquerylayout']);
+	    $this->load->view('projekty/header', $data);
 
 			// debug informations - show only with admin status
 			$_SESSION['user_type'] == "admin" ? $this->load->view('projekty/main', $data) : '';
-			
+
 			$this->load->view('projekty/menubutton', $data);
-	        $this->load->view('projekty/footer', $data);        	
+	        $this->load->view('projekty/footer', $data);
         }
-		
-		
+
+
 
 }
