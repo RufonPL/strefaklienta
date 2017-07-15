@@ -1,12 +1,23 @@
 <div class="menu-dropdown"><!-- TOP-LEFT DROPDOWN MENU-->
   <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog"></i> Settings</button>
+    <div class="btn-group">
+              <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i><?php echo $_SESSION["username"];?></a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+              </a>
+    <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog"></i> Settings</button>-->
     <ul class="dropdown-menu">
     <?php
 		foreach ($dbquery as $row) {
-			echo '<li><a href="'.$row['page_slug'].'">'.$row['page_title'].'</a>
-              <button href="#" class="btn btn-delete pull-right"><i class="fa fa-trash-o"></i></button>
-              <button href="#" class="btn btn-edit pull-right"><i class="fa fa-pencil"></i></button></li>'."\n";
+			echo '<li><a href="'.$row['page_slug'].'">'.$row['page_title'].'</a>';
+      if ($_SESSION['user_type'] == "admin") {
+              ?> <div class="pull-right">
+                <button href="#" class="btn btn-edit"><i class="fa fa-pencil"></i></button>
+                <button href="#" class="btn btn-delete"><i class="fa fa-trash-o"></i></button>
+              </div>
+            </li>
+            <?php
+      }
 		}
 
 		if ($_SESSION['user_type'] == "admin") { ?>

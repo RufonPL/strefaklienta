@@ -5,7 +5,18 @@
   z-index: 9999;
   padding: 0;
 }
+.menu-dropdown .btn-primary {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.menu-dropdown .dropdown-toggle {
+  height: 34px; /*fix for height :( */
+  padding: 9px 8px;
+}
 
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
 .menu-dropdown .dropdown-menu {
   min-width: 250px;
 }
@@ -13,15 +24,24 @@
 .dropdown-menu>li>a {
     display: inline-block;
 }
+
+.dropdown-menu>li>a:hover {
+  background-color: #F5F5F5;
+}
+.menu-dropdown li:hover{
+  background-color: #F5F5F5;
+}
+
 .menu-dropdown li .btn {
   margin-right: 5px;
+  margin-top: 2px;
   padding: 5px 5px;
   margin-bottom: 0;
   font-size: 12px;
 }
 .menu-dropdown li .btn-edit {
   color: #000;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
 }
 
@@ -32,7 +52,7 @@
 }
 .menu-dropdown li .btn-delete {
   color: #000;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
 }
 
