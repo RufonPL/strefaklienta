@@ -1,0 +1,43 @@
+.menu-dropdown {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+  padding: 0;
+}
+
+.menu-dropdown .dropdown-menu {
+  min-width: 250px;
+}
+
+.dropdown-menu>li>a {
+    display: inline-block;
+}
+.menu-dropdown li .btn {
+  margin-right: 5px;
+  padding: 5px 5px;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.menu-dropdown li .btn-edit {
+  color: #000;
+  background-color: #fff;
+  border: none;
+}
+
+.menu-dropdown li .btn-edit:hover {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.menu-dropdown li .btn-delete {
+  color: #000;
+  background-color: #fff;
+  border: none;
+}
+
+.menu-dropdown li .btn-delete:hover {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}

@@ -43,7 +43,10 @@
     .fixed #main > div {
         top: 0;
     }
-
 </style>
+
+  <link rel="stylesheet" href="<?php echo base_url("assets/font-awesome/css");?>/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url("assets/css");?>/main.css">
+
 </head>
 <body>
