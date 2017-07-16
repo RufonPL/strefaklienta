@@ -9,14 +9,29 @@
     <ul class="dropdown-menu">
     <?php
 		foreach ($dbquery as $row) {
-			echo '<li><a href="'.$row['page_slug'].'">'.$row['page_title'].'</a>';
-      if ($_SESSION['user_type'] == "admin") {
-              ?> <div class="pull-right">
-                <button href="#" class="btn btn-edit"><i class="fa fa-pencil"></i></button>
-                <button href="#" class="btn btn-delete"><i class="fa fa-trash-o"></i></button>
-              </div>
-            </li>
-            <?php
+      if ($row['is_active'] == 1 || $_SESSION['user_type'] == "admin"){
+  			if ($row['is_active'] == 1) {
+          echo '<li>';
+        } else {
+          echo '<li class="page-inactive">';
+        }
+        echo '<a href="'.$row['page_slug'].'">'.$row['page_title'].'</a>';
+        if ($_SESSION['user_type'] == "admin") {
+                ?> <div class="pull-right">
+                  <?php if ($row['layout_id'] == 0) { ?>
+                  <button href="#" class="btn btn-success" title="no image found - uload your layout here"><i class="fa fa-file-image-o"></i></button>
+                  <?php }
+                  if ($row['is_active'] == 1) {
+                    echo '<button href="#" class="btn btn-setactive" title="set page as inactive"><i class="fa fa-dot-circle-o"></i></button>';
+                  } else {
+                    echo '<button href="#" class="btn btn-setactive" title="set page as active"><i class="fa fa-circle-o"></i></button>';
+                  } ?>
+                  <button href="#" class="btn btn-edit" title="edit"><i class="fa fa-pencil"></i></button>
+                  <button href="#" class="btn btn-delete" title="delete"><i class="fa fa-trash-o"></i></button>
+                </div>
+              </li>
+              <?php
+        }
       }
 		}
 

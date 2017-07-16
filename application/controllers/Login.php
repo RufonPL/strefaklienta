@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-        public function __construct()
-        {
-        	parent::__construct();
-        	session_start();
-            $this->load->model('login_model');
-			$this->load->helper('url_helper');
-		}
+  public function __construct()
+  {
+    parent::__construct();
+    session_start();
+    $this->load->helper('url_helper');
+    $this->load->model('login_model');
+  }
 
 		public function checkLogin($post_user = 0, $post_password = 0)
 		{
@@ -51,6 +51,10 @@ class Login extends CI_Controller {
 
 		public function loginform()
 		{
+      if (isset($_SESSION["project_id"])) {
+        redirect('/project/view/');
+      }
+
  			//do usunięcia informacje wyciągane z bazy na temat użytkowników
  			$data['allusers'] = $this->login_model->get_users();
 			$this->load->helper('form');

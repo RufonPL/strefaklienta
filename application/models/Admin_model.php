@@ -43,8 +43,20 @@ class Admin_model extends CI_Model {
 				'layout_id' => 0,
         'page_slug' => $pageSlug
 			);
-
 			$this->db->insert('page', $data);
-			return true;
+
+			$this->db->select('id');
+			$this->db->from('page');
+			$this->db->where('page_slug', $pageSlug);
+			$query = $this->db->get();
+			$pageId = $query->row();
+			$pageId = $pageId->id;
+
+
+
+
+
+
+//			return true;
 	}
 }

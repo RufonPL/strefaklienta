@@ -108,7 +108,9 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/pagemodification', $data['query']);
 	}
 
-
+	public function pageDelete(){
+		// TO DO
+	}
 
 
 }
