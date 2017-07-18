@@ -52,7 +52,7 @@ class Project_model extends CI_Model {
 
 	public function get_menuItems($projectID)
 	{
-		$query = $this->db->query("SELECT project.id, page.project_id, page.page_title, page.page_slug, page.layout_id, page.is_active FROM project, page WHERE project.id = page.project_id AND project.id = $projectID");
+		$query = $this->db->query("SELECT project.id, page.project_id, page.page_title, page.page_slug, page.layout_id, page.is_active, page.id FROM project, page WHERE project.id = page.project_id AND project.id = $projectID");
 		return $query->result_array();
 	}
 }

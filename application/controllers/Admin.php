@@ -69,24 +69,28 @@ class Admin extends CI_Controller {
 
 	public function upload()
 	{
+
+		$this->load->helper('url_helper');
+		$this->load->helper('html');
 		$this->load->helper(array('form', 'url'));
 		$this->load->view('admin/upload_form', array('error' => ' ' ));
 	}
 
-	public function do_upload($projectname = false, $uploadname = false)
+	public function do_upload($page)
   {
-		$projectname = "detektyw";
-		$uploadname = "newimage.jpg";
+		print_r($page);
+		$projectname = $this->admin_model->getProjectSlug($_SESSION["project_id"]);
+		$_POST['layout_slug'];
+
   	$config['upload_path']          = './uploads/projects/'.$projectname.'/';
-		$config['file_name']						= $uploadname;
+		$config['file_name']						= $_POST['layout_title'];
     $config['allowed_types']        = 'gif|jpg|png';
-//    $config['max_size']             = 100;
-/*    $config['max_width']            = 1024;*/
-/*    $config['max_height']           = 768;*/
+    $config['max_width']            = 1920;
 
     $this->load->library('upload', $config);
 
-    if ( ! $this->upload->do_upload('userfile'))
+//    if ( ! $this->upload->do_upload('userfile','project_name','layout_title','layout_slug'))
+if ( ! $this->upload->do_upload('userfile'))
 		{
 	  	$error = array('error' => $this->upload->display_errors());
 			$this->load->view('admin/upload_form', $error);
@@ -94,7 +98,8 @@ class Admin extends CI_Controller {
     else
     {
     	$data = array('upload_data' => $this->upload->data());
-	 		$this->load->view('admin/upload_formsuccess', $data);
+			$this->admin_model->addPageLayout($_POST['page_id'], $_POST['layout_title'], $_POST['layout_slug']);
+//	 		$this->load->view('admin/upload_formsuccess', $data);
     }
 	}
 
@@ -106,6 +111,16 @@ class Admin extends CI_Controller {
 
 		$data['query'] = $this->admin_model->add_projectPage($projectID, $pagetitle, $pageSlug);
 		$this->load->view('admin/pagemodification', $data['query']);
+	}
+
+	public function pageActive($pageID)
+	{
+		if ($this->admin_model->pageActiveChanger($pageID)){
+		return redirect('/project/view/');
+		}
+		else {
+			echo "error";
+		}
 	}
 
 	public function pageDelete(){

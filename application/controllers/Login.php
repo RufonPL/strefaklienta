@@ -27,27 +27,7 @@ class Login extends CI_Controller {
 					$_SESSION["project_id"] = $project_id;
 				}
 			}
-			if (true)
-			{
-					// do zrobienia controler i model logowania
-/*				$user = 1;
-				$project_id = 1;
-
-				$_SESSION["user"] = $user;
-				$_SESSION["project_id"] = $project_id;
-				$_SESSION["user_type"] = "user"; //kiedyś będzie admin panel dla adminów*/
-			}
-
-
-				echo $_SESSION["user"];
-/*				$host  = $_SERVER['HTTP_HOST'];
-				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				$extra = 'project/view/';
-//				echo "Location: http://$host$uri/$extra";
-				header("Location: http://$host$uri/$extra");
-//				header("Location: APPPATH/);
-				//header("Location: project/view");*/
-        }
+    }
 
 		public function loginform()
 		{
