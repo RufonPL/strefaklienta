@@ -4,14 +4,9 @@
 
 <?php echo "ProjectID = ".$_SESSION["project_id"]."<br>"; ?>
 
-<?php // $project_name = "detektyw";
-
-  print_r($_POST);
-  print_r($data);
-  echo "Page = $page";?>
-
 Project Name: <input disabled type="text" name="project_name" value="<?php echo $this->admin_model->getProjectSlug($_SESSION["project_id"]);?>" />
-Page number: <input disabled type="text" name="page_id" value="<?php //echo $page;?>" />
+Page number: <input disabled type="text" name="page_id" value="<?php echo $_SESSION['pageId'];?>" />
+<input type="hidden" name="page_id" value="<?php echo $_SESSION['pageId'];?>" />
 <br />
 <br/>
 <input type="text" name="layout_title" placeholder="Title"/>

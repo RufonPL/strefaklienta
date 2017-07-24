@@ -67,20 +67,18 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function upload()
+	public function upload($page)
 	{
-
+		print_r($page);
 		$this->load->helper('url_helper');
 		$this->load->helper('html');
 		$this->load->helper(array('form', 'url'));
 		$this->load->view('admin/upload_form', array('error' => ' ' ));
 	}
 
-	public function do_upload($page)
+	public function do_upload()
   {
-		print_r($page);
 		$projectname = $this->admin_model->getProjectSlug($_SESSION["project_id"]);
-		$_POST['layout_slug'];
 
   	$config['upload_path']          = './uploads/projects/'.$projectname.'/';
 		$config['file_name']						= $_POST['layout_title'];
@@ -90,7 +88,7 @@ class Admin extends CI_Controller {
     $this->load->library('upload', $config);
 
 //    if ( ! $this->upload->do_upload('userfile','project_name','layout_title','layout_slug'))
-if ( ! $this->upload->do_upload('userfile'))
+	if ( ! $this->upload->do_upload('userfile'))
 		{
 	  	$error = array('error' => $this->upload->display_errors());
 			$this->load->view('admin/upload_form', $error);
@@ -98,8 +96,10 @@ if ( ! $this->upload->do_upload('userfile'))
     else
     {
     	$data = array('upload_data' => $this->upload->data());
+			print_r($_POST);
 			$this->admin_model->addPageLayout($_POST['page_id'], $_POST['layout_title'], $_POST['layout_slug']);
-//	 		$this->load->view('admin/upload_formsuccess', $data);
+			unset($_SESSION['page_id']);
+	 		$this->load->view('admin/upload_formsuccess', $data);
     }
 	}
 

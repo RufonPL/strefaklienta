@@ -20,6 +20,7 @@
                 ?> <div class="pull-right">
                   <?php if ($row['layout_id'] == 0) {
                   echo '<a href="'.base_url('admin/upload/').$row['id'].'" class="btn btn-success" title="no image found - upload your layout here"><i class="fa fa-file-image-o"></i></a>';
+//                    echo '<form action="'.base_url('admin/upload/').'" method="post"><button name="pageId" type="submit" value="'.$row['id'].'"><i class="fa fa-file-image-o"></i></button></form>';
                   }
                   if ($row['is_active'] == 1) {
                     // make button work
